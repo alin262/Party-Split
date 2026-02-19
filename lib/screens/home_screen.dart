@@ -24,8 +24,9 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder:(context) => const CreatePartyScreen(),));
+        onPressed: ()async {
+          final result=await Navigator.push(context, MaterialPageRoute(builder:(context) => const CreatePartyScreen(),));
+          print(result);
         },
         child: const Icon(Icons.add),
       ),
