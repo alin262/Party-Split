@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/party.dart';
 
 class CreatePartyScreen extends StatefulWidget {
   const CreatePartyScreen({super.key});
@@ -31,8 +32,9 @@ class _CreatePartyScreenState extends State<CreatePartyScreen> {
 
   void _saveParty() {
     final title = _titleController.text.trim();
-    print("Title saved as: $title");
-    Navigator.pop(context,title);
+    final newParty = Party(createdAt: DateTime.now(), title: title,members: []);
+    
+    Navigator.pop(context, newParty);
   }
 
   @override
@@ -49,6 +51,7 @@ class _CreatePartyScreenState extends State<CreatePartyScreen> {
               const Text("Party Title", style: TextStyle(fontSize: 20)),
               const SizedBox(height: 8),
               TextField(
+                autofocus: true,
                 textAlign: TextAlign.center,
                 controller: _titleController,
                 decoration: const InputDecoration(
