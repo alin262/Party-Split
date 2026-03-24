@@ -32,8 +32,13 @@ class _CreatePartyScreenState extends State<CreatePartyScreen> {
 
   void _saveParty() {
     final title = _titleController.text.trim();
-    final newParty = Party(createdAt: DateTime.now(), title: title,members: []);
-    
+    final newParty = Party(
+      createdAt: DateTime.now(),
+      title: title,
+      members: [],
+      id: "",
+    );
+
     Navigator.pop(context, newParty);
   }
 

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:partysplit/models/member.dart';
 import 'package:partysplit/models/party.dart';
-import 'package:partysplit/services/storage_services.dart';
+import 'package:partysplit/services/firestore_service.dart';
 
 class PartyDetailsScreen extends StatefulWidget {
   const PartyDetailsScreen({
     super.key,
     required this.party,
-    required this.parties,
   });
   final Party party;
-  final List<Party> parties;
 
   @override
   State<PartyDetailsScreen> createState() => _PartyDetailsScreenState();
@@ -45,7 +43,7 @@ class _PartyDetailsScreenState extends State<PartyDetailsScreen> {
                 setState(() {
                   widget.party.members.remove(member);
                 });
-                await StorageServices.saveParties(widget.parties);
+                await FirestoreService().updateParty(widget.party);
                 Navigator.pop(context);
               },
               child: Text("Delete"),
@@ -103,7 +101,7 @@ class _PartyDetailsScreenState extends State<PartyDetailsScreen> {
                   final amount = double.tryParse(addcontroller.text) ?? 0;
                   member.amountPaid = member.amountPaid + amount;
                 });
-                await StorageServices.saveParties(widget.parties);
+                await FirestoreService().updateParty(widget.party);
                 if (!mounted) return;
                 Navigator.pop(context);
               },
@@ -144,7 +142,7 @@ class _PartyDetailsScreenState extends State<PartyDetailsScreen> {
                 setState(() {
                   member.amountPaid = double.tryParse(editController.text) ?? 0;
                 });
-                await StorageServices.saveParties(widget.parties);
+                await FirestoreService().updateParty(widget.party);
                 Navigator.pop(context);
               },
               child: Text("Save"),
@@ -180,7 +178,7 @@ class _PartyDetailsScreenState extends State<PartyDetailsScreen> {
                     );
                   });
 
-                  await StorageServices.saveParties(widget.parties);
+                  await FirestoreService().updateParty(widget.party);
                   Navigator.pop(context);
                 }
               },

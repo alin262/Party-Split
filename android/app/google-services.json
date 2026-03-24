@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "749188751242",
+    "project_id": "splitty-alin-as26",
+    "storage_bucket": "splitty-alin-as26.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749188751242:android:b18598180e62d8454cb273",
+        "android_client_info": {
+          "package_name": "com.example.partysplit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749188751242-k60h2jge0v1siqnmfp1m5cl86cvubgqf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.partysplit",
+            "certificate_hash": "d1c240a19194d1d03e5f7bf0b3976aa31411bf82"
+          }
+        },
+        {
+          "client_id": "749188751242-mc03tf9l7n20vup6mshhoufifh0mh041.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfNMQMPXNaeYKkmjIaoB6dR3daXbz-7wk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749188751242-mc03tf9l7n20vup6mshhoufifh0mh041.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

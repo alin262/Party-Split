@@ -13,7 +13,7 @@ Map<String,dynamic> toJson(){
   };}
   factory Member.fromJson(Map<String,dynamic> json){
     return Member(name: json["name"],
-    amountPaid: (json["amountPaid"]??0.toDouble()));
+    amountPaid: (json["amountPaid"]??0).toDouble());
   }
 
 }

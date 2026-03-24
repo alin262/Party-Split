@@ -1,25 +1,30 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:partysplit/models/member.dart';
 
 class Party {
   final String title;
+  final String id;
   final DateTime createdAt;
   final List<Member> members;
 
-  Party({required this.title, required this.createdAt, required this.members});
+  Party({required this.title, required this.createdAt, required this.members,required this.id});
 
   Map<String, dynamic> toJson() {
     return {
       "title": title,
-      "createdAt": createdAt.toIso8601String(),
+      "createdAt": createdAt,
+      
       "members": members.map((m) => m.toJson()).toList()
     };
   }
 
-  factory Party.fromJson(Map<String, dynamic> json) {
+  factory Party.fromFirestore(DocumentSnapshot doc) {
+    final json=doc.data() as Map<String,dynamic>;
     return Party(
+      id:doc.id,
       title: json["title"],
-      createdAt: DateTime.parse(json["createdAt"]),
-      members: (json["members"]as List).map((m)=>Member.fromJson(Map<String,dynamic>.from(m))).toList(),
+      createdAt:(json["createdAt"] as Timestamp).toDate(),
+      members: (json["members"]??[]).map<Member>((m)=>Member.fromJson(Map<String,dynamic>.from(m))).toList(),
     );
   }
 }
